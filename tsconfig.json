@@ -1,0 +1,52 @@
+{
+	"compilerOptions": {
+		/* Projects */
+		"incremental": true,
+
+		/* Language and Environment */
+		"useDefineForClassFields": true,
+
+		/* Modules */
+		"target": "ESNext",
+		"lib": ["DOM", "ESNext"],
+		"jsx": "react-native",
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"resolveJsonModule": true,
+
+		/* Emit */
+		"importsNotUsedAsValues": "error",
+		"noEmit": true,
+
+		/* Interop Constraints */
+		"isolatedModules": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+
+		/* Type Checking */
+		"strict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictBindCallApply": true,
+		"strictPropertyInitialization": true,
+		"noImplicitThis": true,
+		"useUnknownInCatchVariables": true,
+		"alwaysStrict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": false,
+		"allowUnusedLabels": false,
+		"allowUnreachableCode": false,
+		"exactOptionalPropertyTypes": false,
+		"noFallthroughCasesInSwitch": false,
+
+		/* Completeness */
+		"skipLibCheck": false
+	},
+	"include": ["src"]
+}
