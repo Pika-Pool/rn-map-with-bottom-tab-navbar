@@ -20,6 +20,7 @@ export default function BottomTabs() {
 				tabBarActiveTintColor: '#0d0d0d',
 				headerShown: false,
 				tabBarStyle: { height: BOTTOM_TAB_BAR_HEIGHT },
+				// tabBarHideOnKeyboard: true,
 			})}
 		>
 			<Tabs.Screen name='Compass' component={MapScreen} />
