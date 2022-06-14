@@ -1,7 +1,7 @@
 import type { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { TAB_BAR_HEIGHT } from './BottomTabs';
+import { BOTTOM_TAB_BAR_HEIGHT } from '../utils/constants';
 
 // custom tab bar button for red floating plus icon
 export default function CTATabBarButton({
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 	},
 	iconContainer: {
 		flex: 1,
-		width: TAB_BAR_HEIGHT,
+		width: BOTTOM_TAB_BAR_HEIGHT,
 		borderRadius: 5000,
 		backgroundColor: '#fe3139',
 	},

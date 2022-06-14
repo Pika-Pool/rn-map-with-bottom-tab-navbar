@@ -1,12 +1,11 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import MapScreen from '../screens/Map';
+import { BOTTOM_TAB_BAR_HEIGHT } from '../utils/constants';
 import CTATabBarButton from './CTATabBarButton';
 import TabBarIcon from './TabBarIcon';
 
 const Tabs = createBottomTabNavigator();
-
-export const TAB_BAR_HEIGHT = 60;
 
 export default function BottomTabs() {
 	return (
@@ -20,7 +19,7 @@ export default function BottomTabs() {
 				tabBarInactiveTintColor: '#0d0d0d',
 				tabBarActiveTintColor: '#0d0d0d',
 				headerShown: false,
-				tabBarStyle: { height: TAB_BAR_HEIGHT },
+				tabBarStyle: { height: BOTTOM_TAB_BAR_HEIGHT },
 			})}
 		>
 			<Tabs.Screen name='Compass' component={MapScreen} />
