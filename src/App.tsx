@@ -1,6 +1,13 @@
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { SafeAreaView, StatusBar, Text, useColorScheme } from 'react-native';
+import {
+	SafeAreaView,
+	StatusBar,
+	StyleSheet,
+	useColorScheme,
+} from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import BottomTabs from './components/BottomTabs';
 
 export default function App() {
 	const isDarkMode = useColorScheme() === 'dark';
@@ -10,9 +17,16 @@ export default function App() {
 	};
 
 	return (
-		<SafeAreaView style={backgroundStyle}>
-			<StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-			<Text>Hello</Text>
-		</SafeAreaView>
+		<NavigationContainer>
+			<SafeAreaView style={[backgroundStyle, styles.globalContainer]}>
+				<StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+
+				<BottomTabs />
+			</SafeAreaView>
+		</NavigationContainer>
 	);
 }
+
+const styles = StyleSheet.create({
+	globalContainer: { flex: 1 },
+});
