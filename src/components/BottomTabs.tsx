@@ -1,6 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import useKeyboardState from '../hooks/useKeyboardState';
+import useThemedValue from '../hooks/useThemedValue';
 import MapScreen from '../screens/Map';
 import { BOTTOM_TAB_BAR_HEIGHT } from '../utils/constants';
 import CTATabBarButton from './CTATabBarButton';
@@ -10,6 +12,11 @@ const Tabs = createBottomTabNavigator();
 
 export default function BottomTabs() {
 	const isKeyboardVisible = useKeyboardState();
+	const tabBarTintColor = useThemedValue('#0d0d0d', '#eee');
+	const tabBarStyle = useThemedValue(styles.tabBarStyle, [
+		styles.tabBarStyle,
+		styles.tabBarStyleDark,
+	]);
 
 	return (
 		<Tabs.Navigator
@@ -18,12 +25,12 @@ export default function BottomTabs() {
 				tabBarIcon: ({ focused, color }) => (
 					<TabBarIcon focused={focused} color={color} routeName={route.name} />
 				),
-				tabBarShowLabel: false,
-				tabBarInactiveTintColor: '#0d0d0d',
-				tabBarActiveTintColor: '#0d0d0d',
+				tabBarStyle,
 				headerShown: false,
-				tabBarStyle: { height: BOTTOM_TAB_BAR_HEIGHT },
 				tabBarHideOnKeyboard: true,
+				tabBarShowLabel: false,
+				tabBarActiveTintColor: tabBarTintColor,
+				tabBarInactiveTintColor: tabBarTintColor,
 			})}
 		>
 			<Tabs.Screen name='Compass' component={MapScreen} />
@@ -45,3 +52,8 @@ export default function BottomTabs() {
 		</Tabs.Navigator>
 	);
 }
+
+const styles = StyleSheet.create({
+	tabBarStyle: { height: BOTTOM_TAB_BAR_HEIGHT, backgroundColor: 'white' },
+	tabBarStyleDark: { backgroundColor: 'black' },
+});

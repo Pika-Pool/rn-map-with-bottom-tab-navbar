@@ -3,27 +3,48 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import SearchBar from '../components/SearchBar';
+import useColorTheme from '../hooks/useColorTheme';
+import useThemedValue from '../hooks/useThemedValue';
 import { shadowStyles } from '../styles/global';
 
 export default function MapScreen() {
+	const { toggleTheme } = useColorTheme();
+	const overlayButtonStyle = useThemedValue(styles.overlayButton, [
+		styles.overlayButton,
+		styles.overlayButtonDark,
+	]);
+	const overlayButtonIconColor = useThemedValue('black', 'white');
+	const toggleIconName = useThemedValue(
+		'toggle-switch-outline',
+		'toggle-switch-off-outline',
+	);
+
 	return (
 		<View style={styles.screenContainer}>
 			<View style={styles.overlayContainer}>
 				<SearchBar />
 
 				<View style={styles.overlayButtonsContainer}>
+					{/* color theme toggle button */}
 					<TouchableOpacity
-						style={styles.overlayButton}
+						style={overlayButtonStyle}
 						accessibilityRole='togglebutton'
+						onPress={() => toggleTheme()}
 					>
 						<MaterialCommunityIcons
-							name='toggle-switch-off-outline'
-							size={30}
+							name={toggleIconName}
+							size={23}
+							color={overlayButtonIconColor}
 						/>
 					</TouchableOpacity>
 
-					<TouchableOpacity style={styles.overlayButton}>
-						<FontAwesome5 name='paper-plane' size={23} />
+					{/* paper place button */}
+					<TouchableOpacity style={overlayButtonStyle}>
+						<FontAwesome5
+							name='paper-plane'
+							size={18}
+							color={overlayButtonIconColor}
+						/>
 					</TouchableOpacity>
 				</View>
 			</View>
@@ -50,5 +71,9 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginVertical: 4,
 		...shadowStyles.shadow,
+	},
+	overlayButtonDark: {
+		backgroundColor: '#393939',
+		...shadowStyles.shadowDark,
 	},
 });
