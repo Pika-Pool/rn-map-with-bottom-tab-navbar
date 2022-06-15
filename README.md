@@ -4,7 +4,7 @@
 
 > Note: This app has only been tested for android.
 
-1. Use the `.apk` file at `[android/app-release.apk](android/app-release.apk)` to install the app on your device
+1. Use the `.apk` file at [android/app-release.apk](android/app-release.apk) to install the app on your device
 
 2. For development:
 
