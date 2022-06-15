@@ -23,6 +23,8 @@ export default function SearchBar() {
 	const [searchText, setSearchText] = useState('');
 	const onSearchResultPress = (text: string) => setSearchText(text);
 
+	const [shouldShowSearchResults, setShouldShowSearchResults] = useState(false);
+
 	return (
 		<View>
 			{/* using pressable to pass press event to text input when the icon is pressed */}
@@ -42,10 +44,12 @@ export default function SearchBar() {
 					ref={textInputRef}
 					value={searchText}
 					onChangeText={text => setSearchText(text)}
+					onFocus={() => setShouldShowSearchResults(true)}
+					onBlur={() => setShouldShowSearchResults(false)}
 				/>
 			</Pressable>
 
-			{textInputRef.current?.isFocused() ? (
+			{shouldShowSearchResults ? (
 				<ScrollView
 					style={[
 						styles.searchResultsContainer,
