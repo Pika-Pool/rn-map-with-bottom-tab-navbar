@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
+import useKeyboardState from '../hooks/useKeyboardState';
 import MapScreen from '../screens/Map';
 import { BOTTOM_TAB_BAR_HEIGHT } from '../utils/constants';
 import CTATabBarButton from './CTATabBarButton';
@@ -8,6 +9,8 @@ import TabBarIcon from './TabBarIcon';
 const Tabs = createBottomTabNavigator();
 
 export default function BottomTabs() {
+	const isKeyboardVisible = useKeyboardState();
+
 	return (
 		<Tabs.Navigator
 			screenOptions={({ route }) => ({
@@ -20,7 +23,7 @@ export default function BottomTabs() {
 				tabBarActiveTintColor: '#0d0d0d',
 				headerShown: false,
 				tabBarStyle: { height: BOTTOM_TAB_BAR_HEIGHT },
-				// tabBarHideOnKeyboard: true,
+				tabBarHideOnKeyboard: true,
 			})}
 		>
 			<Tabs.Screen name='Compass' component={MapScreen} />
@@ -30,7 +33,9 @@ export default function BottomTabs() {
 				name='Plus'
 				component={MapScreen}
 				options={{
-					tabBarItemStyle: { top: -15 },
+					// the cta button shows above keyboard
+					// so remove top:-15 when keyboard is open
+					tabBarItemStyle: { top: isKeyboardVisible ? 0 : -15 },
 					tabBarButton: CTATabBarButton,
 				}}
 			/>
