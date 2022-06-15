@@ -25,7 +25,6 @@ export default function SearchBar() {
 const styles = StyleSheet.create({
 	searchBar: {
 		backgroundColor: 'white',
-		margin: 20,
 		borderRadius: 5,
 		flexDirection: 'row',
 		alignItems: 'center',
